@@ -68,6 +68,26 @@ public class EmployeeController {
 	{
 	return repo.findById(eid);
 	}
+	@PostMapping("/employees")
+	public Employees getEmployees3(@RequestBody Employees employees)
+	{
+		repo.save(employees);
+		return employees;
+	}
+	@DeleteMapping("/employees/{eid}")
+	public Employees getEmployees4(@PathVariable("eid")int eid)
+	{
+		Employees emp = repo.getOne(eid);
+		repo.delete(emp);
+		return emp;
+	}
+	
+	@PutMapping(path="/employees",consumes= {"application/json"})
+	public Employees getEmployees5(@RequestBody Employees employees)
+	{
+		repo.save(employees);
+		return employees;
+	}
 	
 		
 	}
